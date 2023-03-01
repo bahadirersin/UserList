@@ -9,12 +9,12 @@ import SwiftUI
 
 struct TagList: View {
     
-    let user:User
+    let user:CachedUser
     
     var body: some View {
         ScrollView(.horizontal,showsIndicators: false){
             HStack(alignment:.center){
-                ForEach(user.tags, id:\.self){
+                ForEach(user.tagArray, id:\.self){
                     Text("\($0)")
                         .padding(.horizontal)
                         .padding(5)
@@ -30,12 +30,5 @@ struct TagList: View {
                 }
             }
         }
-    }
-}
-
-struct TagList_Previews: PreviewProvider {
-    static var previews: some View {
-        let usus:[User] =  Bundle.main.decode(url: "https://www.hackingwithswift.com/samples/friendface.json")
-        TagList(user:usus[0])
     }
 }

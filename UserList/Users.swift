@@ -5,14 +5,16 @@
 //  Created by Bahadır Ersin on 28.02.2023.
 //
 
+import SwiftUI
 import Foundation
 
 class Users:ObservableObject{
     
-    @Published var users:[User]
+    @Published var fetchedUsers:[User]
     
     init(){
-        users = Bundle.main.decode(url: "https://www.hackingwithswift.com/samples/friendface.json")
+        fetchedUsers = Bundle.main.decode(url: "https://www.hackingwithswift.com/samples/friendface.json")
     }
+    
 
 }

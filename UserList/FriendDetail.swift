@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FriendDetail: View {
     
-    let user:User
+    let user:CachedUser
     
     var body: some View {
         ScrollView{
@@ -20,7 +20,7 @@ struct FriendDetail: View {
                         Text("Email:")
                             .fontWeight(.bold)
                             .font(.subheadline)
-                        Text(user.email)
+                        Text(user.wrappedEmail)
                             .font(.subheadline)
                     }
                     
@@ -36,7 +36,7 @@ struct FriendDetail: View {
                         Text("Company Name:")
                             .fontWeight(.bold)
                             .font(.subheadline)
-                        Text(user.company)
+                        Text(user.wrappedCompany)
                             .font(.subheadline)
                     }
                     
@@ -44,7 +44,7 @@ struct FriendDetail: View {
                         Text("Address:")
                             .fontWeight(.bold)
                             .font(.subheadline)
-                        Text(user.address)
+                        Text(user.wrappedAddress)
                             .font(.subheadline)
                     }
                 }
@@ -55,7 +55,7 @@ struct FriendDetail: View {
                     Text("About:")
                         .fontWeight(.bold)
                         .font(.subheadline)
-                    Text(user.about)
+                    Text(user.wrappedAbout)
                         .font(.subheadline)
                 }.padding(.top,5)
 
@@ -81,17 +81,9 @@ struct FriendDetail: View {
             }
             .padding(.horizontal)
             .padding(.top,30)
-            .navigationTitle(user.name)
+            .navigationTitle(user.wrappedName)
             .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
-struct FriendDetail_Previews: PreviewProvider {
-
-    static var previews: some View {
-        let usus:[User] =  Bundle.main.decode(url: "https://www.hackingwithswift.com/samples/friendface.json")
-        
-        FriendDetail(user:usus[0])
-    }
-}

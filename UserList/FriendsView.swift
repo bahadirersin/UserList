@@ -9,14 +9,14 @@ import SwiftUI
 
 struct FriendsView: View {
     
-    let user:User
+    let user:CachedUser
     let columns = [
         GridItem(.adaptive(minimum: 100))
     ]
     var body: some View {
         LazyVGrid(columns: columns){
-                ForEach(user.friends, id:\.self){
-                    Text("\($0.name)")
+            ForEach(user.friendArray, id:\.self){
+                Text("\($0.wrappedName)")
                         .padding(.horizontal)
                         .padding(5)
                         .frame(minHeight: 50)
@@ -34,9 +34,3 @@ struct FriendsView: View {
     }
 }
 
-struct FriendsView_Previews: PreviewProvider {
-    static var previews: some View {
-        let usus:[User] =  Bundle.main.decode(url: "https://www.hackingwithswift.com/samples/friendface.json")
-        FriendsView(user:usus[0])
-    }
-}
